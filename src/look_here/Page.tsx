@@ -2,6 +2,7 @@ import React from "react";
 import {starterTodos, TodoType} from "./index";
 import TodoList from "./TodoList";
 import SelectedTodo from "./SelectedTodo";
+import {AddTodo} from "./AddTodo";
 
 const Page: React.FC = () => {
 
@@ -17,9 +18,11 @@ const Page: React.FC = () => {
         }}>
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 <SelectedTodo content={todos[0]}/>
+                <AddTodo onAddTodo={({title, description}) => setTodos(old => [...old, { title, description, id: old.length }])}/>
             </div>
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 <TodoList todos={todos}/>
+
             </div>
         </div>
     )
